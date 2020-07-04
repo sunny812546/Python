@@ -1,0 +1,155 @@
+.........................................Join Function..............................
+list1 = ["sunny","lilly","Sanny"]
+
+print(" and ".join(list1))
+
+.....................................F'String Function......................
+students = ["s","a","d"]
+os = ["raspberrypi","android","ios"]
+for i in range(0,len(students)):
+    print(f"{students[i]} uses {os[i]} OS")
+
+.................................Enumerate Function............................
+students = ["s","a","d"]
+for i,item in enumerate(students):
+    print("index",i,end="  ")
+    print("item",item,end="\n")
+
+...............................Bisect Module...................................
+import bisect
+students = ["sunny","akash","diku"]
+students.sort()
+
+print(bisect.bisect(students,"farahan"))#give the index 
+bisect.insort(students,"farahan")
+print(students)
+
+# o/p:
+# 2
+# ['akash', 'diku', 'farahan', 'sunny']
+
+................................Advanced List Slicing..........
+students = [41,5,2,4,5,45,622,4,552,145,2,452,451,2542,641,1]
+print(students[:],end="\n")#[41, 5, 2, 4, 5, 45, 622, 4, 552, 145, 2, 452, 451, 2542, 641, 1]
+print(students[:9],end="\n")#[41, 5, 2, 4, 5, 45, 622, 4, 552]
+print(students[1:],end="\n")#[5, 2, 4, 5, 45, 622, 4, 552, 145, 2, 452, 451, 2542, 641, 1]
+print(students[1:9],end="\n")#[5, 2, 4, 5, 45, 622, 4, 552]
+print(students[-2:],end="\n")# [641, 1]  
+print(students[-5:-1],end="\n")#[452, 451, 2542, 641]
+print(students[:-1],end="\n")#[41, 5, 2, 4, 5, 45, 622, 4, 552, 145, 2, 452, 451, 2542, 641]
+print(students[::2],end="\n")#[41, 2, 5, 622, 552, 2, 451, 641]
+print(students[::-1],end="\n")#reverse [1, 641, 2542, 451, 452, 2, 145, 552, 4, 622, 45, 5, 4, 2, 5, 41]
+
+.............................Lambda Function...................
+# lambda Sum Function
+sum = lambda x,y:x+y
+print(sum(8,9))
+
+# list Sorting using lambda
+a = [[1,52],[85,45],[89,777]]
+# def s(var):
+#     return var[1]
+# a.sort(key=s)
+a.sort(key=lambda x:x[1])
+print(a)
+................................Map Function...................
+# Finding Square using Traditional Method
+list1 = [1,2,221,23,56]
+sq = []
+for i in range(0,len(list1)):
+    sq.append(list1[i]**2)
+print(sq)
+
+# using Map Function
+sq1 = list(map(lambda x:x**2,list1))
+sq1 = list(map(str,list1))//String convert
+print(sq1)
+
+..................................Filter Method...................
+//Return True And False
+#Sort list if number  greater than 100
+list1 = [1,2,221,23,56]
+greaterThan100 = list(filter(lambda x:x>100,list1))
+print(greaterThan100)
+
+................................Reduce Function.............
+from functools import reduce
+list1 = [1,2,221,23,56]
+sum = reduce(lambda x,y:x+y,list1)
+print(sum)
+
+.............................List,set.dict & gen Comprehesion................
+# list finding odd number
+odd = [odd for odd in range(100) if odd%2!=0]
+print(odd)
+
+#Dict 
+dict1 ={"a":45,"b":455,"A":788}
+#Get Method in Dict dict.get(key,default=None) without throwing error
+adda = {k.lower():dict1.get(k.lower(),0)+dict1.get(k.upper(),0) for k in dict1.keys()}
+print(adda)
+
+#set
+square = {i**2 for i in [*range(4)]}
+print(square)
+
+#gen
+gen = (i for i in range(79) if i%3==0)
+for item in gen:
+    print(item)
+
+.............................try,except,finally,else.....................
+try:
+    open("sun.txt")
+except Exception as e:
+    print(e)
+else:
+    print("no error")
+finally:
+    print("always execute")
+
+.............................if __name__="__main__": ......................
+print(__name__)
+
+..............................*args and **kwargs.......................
+# *args and **kwargs
+def fun(*args):
+    print(type(args))//tuple
+    for i in range(0,len(args)):
+        print(args[i])
+
+fun("synn",56,"o")
+list1 = [646,6,58,45,64,564,56,45,642232,325855,25285,5545,5556,45]
+fun(*list1)
+
+def fun1(**kwargs):
+    print(type(kwargs))//Dictinary
+    for k,v in kwargs.items():
+        print(f"Key:{k} value:{v}")
+dict1 ={
+    "sunny":45,"akash":56,"jimmy":45}
+fun1(**dict1)
+
+......................Virtual Environment...................
+Shift+rightclick open cmd//open
+Step:1 -pip install virtualenv//install
+step:2 virtualenv sunny//create
+3: sunny\scripts\activate//activate
+4:pip install anypackages//packages installed in env
+5:deactivate//as name implied
+6:pip freeze > requirements.txt //as name
+.......
+7:virtualenv --system-site-packages name //all systems included
+8:deactiave name
+9:del name //deleted
+...........
+10:pip install -r .\requirements.txt //install
+
+....................any in python..............
+-mylist = [False, True, False]
+x = any(mylist)//return true
+print(x)
+
+-mylist = [False, Flase, False]
+x = any(mylist)//return False
+print(x)
